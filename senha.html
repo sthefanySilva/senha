@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Senha</title>
+			<script src="./JS/jquery.min.js"></script>
+			<link rel="stylesheet" type="text/css" href="./css/estilo.css"/>
+		<script>
+			$(function(){
+
+				function isLetter(digito){
+					if((digito.charCodeAt(0)>64 && digito.charCodeAt(0)<91) ||(digito.charCodeAt(0)>96 && digito.charCodeAt(0)<123) ){
+						return true; 
+					}
+
+					return false; 
+					
+				};
+
+				function isNumber(digito){
+					if(digito.charCodeAt(0)>=48 && digito.charCodeAt(0)<=57){
+						return true; 
+					}
+
+					return false;
+				};
+
+				function isCaracter(digito){
+					if(digito.charCodeAt(0)>=33 && digito.charCodeAt(0)<=47){
+						return true; 
+					}
+
+					return false;
+				};
+				
+				$("#senha").keyup(function(){
+
+					var texto=$(this).val();
+
+						console.log(texto);
+
+						var temNumero=false;
+						var temLetra=false;
+						var temEspecial=false;
+
+						for( var i=0;i<texto.length; i++){
+
+									if(isLetter(texto.charAt(i))){
+										var temLetra=true;
+									}
+
+									if(isNumber(texto.charAt(i))){
+										var temNumero=true;
+									}
+
+									if(isCaracter(texto.charAt(i))){
+										var temEspecial=true;
+									}
+
+								};
+
+						if(texto.length<8){
+						
+							if(temLetra==true|| temNumero==true || temEspecial==true){
+								$("p").text("Senha muito fraca!");
+								$("p").attr("class","mfraca");
+							}
+
+							if(temNumero==true && temEspecial==true||temNumero==true && temLetra==true||temLetra==true && temEspecial==true){
+								$("p").text("Senha fraca!");
+								$("p").attr("class","fraca");
+							}
+
+						}
+						else{
+
+							if(temLetra==true||temNumero==true||temEspecial==true){
+								$("p").text("Senha fraca!");
+								$("p").attr("class","fraca");	
+							}
+
+
+							if(temEspecial==true && temLetra==true||temEspecial==true && temNumero==true||temNumero==true && temLetra==true){
+								$("p").text("Senha moderada!");
+								$("p").attr("class","moderada");	
+							}
+
+							
+							if(temNumero==true && temLetra==true && temEspecial==true){
+								$("p").text("Senha forte!");
+								$("p").attr("class","forte");	
+							}
+						}
+						
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div class="campo">
+			<div class="senha">Senha:</div><br>
+			<input type="text" id="senha" name="senha" placeholder="Digite sua senha" ><br>
+			<p></p>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,35 @@
+body{
+	border:1px solid #000;
+	margin: 300px;
+	margin-left:650px;
+	width:300px;
+	height: 300px;
+	text-align:center;
+	background-color:#336699;
+	border-radius:5%;
+}
+
+.mfraca{
+	color:#ff0000;
+	font-size:1.5em;
+}
+.fraca{
+	color:#ff6600;
+	font-size:1.5em;
+}
+.moderada{
+	color:#3333ff;
+	font-size:1.5em;
+}
+.forte{
+	color:#006600;
+	font-size:1.5em;
+}
+
+.campo{
+	margin-top:90px;
+	font-size:1.5em;
+}
+.senha{
+	margin:5px;
+}
